@@ -1,9 +1,7 @@
-procbar:ProcBar.c Main.c
+code_6_22:game.c main.c
 	gcc $^ -o $@
-#gcc ProcBar.c Main.c -o procbar
 
 .PHONY:clean
 clean:
-	rm -f procbar
-
+	rm -rf code_6_22
 
