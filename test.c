@@ -1,102 +1,100 @@
 #include <stdio.h>
-#include <math.h>
+//#include <string.h>
+//int Max(int* pa,int* pb)
+/*{
+    int z = 0;
+    z = x > y ? x : y;
+    return z;
+}*/
+void Swap(int* pa,int* pb)
+{
+     int tmp = 0;
+     tmp = *pa;
+     *pa = *pb;
+     *pb = tmp;
+}
 int main()
 {
-  //依次按大小顺序输入3个数字中的最大值、中间值、最小值
-  /* int a =0;
-  int b =0;
-  int c =0;
-  scanf("%d %d %d",&a,&b,&c);
-  if(a<b)
-   {
-    int temp = a;
-    a = b;
-    b = temp;
-   }
-  if(a<c)
-   {
-    int temp = a;
-    a = c;
-    c = temp;
-   }
-  if(b<c)
-   {  
-    int temp = b;
-    b = c;
-    c = temp;
-   }
-  printf("%d %d %d\n",a,b,c);*/
-
-//打印1~100之间3的倍数。
-   /*int i = 0;
-   for(i=3;i<100;i+=3)
-   { 
-      printf("%d ",i);
-   }*/
-
-//给定两个数，求它们的最大公约数和最小公倍数。
-/*
-   int a = 0;
-   int b = 0;
-   int c = 0;
-   int d = 0;
-   scanf("%d %d",&a,&b);
-   int tmp1 = a;
-   int tmp2 = b;
-   while(c = a%b)
-   {
-     a = b;
-     b = c;
-   }//辗转相除法得到最大公约数
-   d = tmp1*tmp2/b; //最大公约数*最小公倍数 = 这两个数的乘积
-   printf("%d %d\n",b,d);*/
-
-
-//打印1000～2000之间闰年的年份
-   // int year = 0;
-   // int count = 0;
-   // for(year=1000;year<=2000;year++)
-   // {
-       /*if(year%4 ==  0 && year%100 != 0)
-//判断闰年的规则：1.能被4整除且不能被100整除；2.能被400整除；
+  //从1～100中找出含有数字9的数字。
+    /*int i = 0;
+    int count = 0;
+    for(i=1;i<=100;i++)
+    {
+       if(i%10==9)
        {
-          printf("%d ",year);
+          printf("%d ",i);
+          count ++;
+       }
+       else if(i/10==9)
+       {
+          printf("%d ",i);
 	  count++;
        }
-       else if(year%400 == 0)
-       {
-          printf("%d ",year);
-	  count++;
-       }
-    }*/
-     /* if((year%4==0 && year%100 != 0) ||(year%400 == 0))
-      {
-	printf("%d ",year);
-        count++;
-      }
     }
     printf("\ncount=%d\n",count);*/
-    //打印100～200素数（质数）
-    //如果一个数=两个数的乘积，这两个数中至少有一个小于等于这个数的平方根。
-
-    int i = 0;
-    int count = 0;;
-    for(i=100;i<=200;i++)
+   
+//分数求和：计算1/1-1/2+1/3-1/4+1/5...+1/99-1/100
+    
+    /*int i = 0;
+    float sum = 0.0;
+    int flag = 1;
+    for(i=1;i<=100;i++)
     {
-       int j = 0;
-       for(j=2;j<=sqrt(i);j++)
+       sum+=flag*1.0/i; 
+       flag = -flag;
+    }
+    printf("%f\n",sum); */
+
+//求10个数中最大值
+  /*  int arr[] = {1,2,3,4,5,6,7,8,9,10};
+    int max = arr[0];
+    int sz = sizeof(arr)/sizeof(arr[0]);
+    int i = 0;
+    for(i=1;i<sz;i++)
+    {
+       if(max <= arr[i])
        {
-	  if(i%j == 0)
-	  {
-	    break;
-	  }
-       }
-       if(j>sqrt(i))
+         max=arr[i];
+       }      
+    }
+    printf("max = %d\n",max);*/
+//九九乘法口诀表   
+    /*int i = 0;
+    for(i=1;i<=9;i++)
+    {
+       int j= 0;
+       for(j=1;j<=i;j++)
        {
-	    count++;
-	    printf("%d ",i);
-       }	
-    } 
-    printf("\ncount=%d\n",count);
-    return 0;   
+          printf("%d*%d=%-2d ",i,j,i*j);
+       } 
+    printf("\n");
+    }*/
+
+//memset 的用法
+   /* char arr[] = "hello world";
+   memset(arr,'*',5);
+   printf("%s\n",arr);*/
+
+//strcpy 的用法
+  /* char arr1[] = "bit";
+   char arr2[20] = "########";
+   strcpy(arr2,arr1);
+   printf("%s\n",arr2);*/
+//写一个函数找出两个数中的较大值
+ /*   int a = 0;
+    int b = 0;
+    scanf("%d %d",&a,&b);
+    int c = Max(a,b);
+    printf("the max=%d\n",c);*/
+   
+//写一个函数可以调换连个整型变量的位置
+    int a = 0;
+    int b = 0;
+    scanf("%d %d",&a,&b);
+    Swap(&a,&b);
+    printf("a=%d b=%d\n",a,b);    
+    return 0;
 }
+    
+
+    
