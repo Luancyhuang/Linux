@@ -1,47 +1,32 @@
+//汉诺塔（函数递归的方式实现）
+//算法分析：1.先将n-1个盘子放在B下；
+//          2.将A下剩下的一个盘子放到C下；
+//          3.再将B下的n-1 个盘子移动到C下。
 #include <stdio.h>
-
-/*int MySum(int top)
+void Move(char x,char y)
 {
-   int i = 1;
-   int sum = 0;
-   for(;i<top;i++)
-   {
-      sum += i;
-   }
-   return sum;
-}*/
-int IsPrime(int n)
-{   
-    int m = 0; 
-    for(m=2;m<n;m++)
-    {
-       if(n%m == 0)
-       {
-          return 0;
-       }	    
-    }
-    return 1;
+  printf("%c->%c ",x,y);
 }
-
-
-
-
-
-int main()
+void HanNuo(int n, char A, char B ,char C)
 {
-   /*printf("process begin running...!\n");
-   int result = MySum(100);
-   printf("result = %d\n",result);
-   printf("process end running...!\n");*/
- //写一个函数可以判断一个数是不是素数（质数）
-     int i = 0;
-     for(i = 100;i<=200;i++)
-     {
-        if(IsPrime(i)==1)
-        {
-	   printf("%d ",i);
-        }
-     }
-
-	return 0;
-}	
+  if(n==1)
+  {
+    Move(A,C);
+  }
+  else
+  {
+    HanNuo(n-1,A,C,B);
+    Move(A,C);
+    HanNuo(n-1,B,A,C);
+  }
+}
+int main()
+{ 
+  int n = 0;
+  char c[3]={'A','B','C'};
+  printf("Please input your number:\n");
+  scanf("%d",&n);
+  HanNuo(n,'A','B','C');
+  printf("\n");
+  return 0;
+}
