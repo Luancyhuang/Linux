@@ -1,30 +1,34 @@
-//写一个函数，对一个16位的二进制数取出它的奇数位（即从左边起第1，3，5，...15位）
+//青蛙跳台阶的问题：
+//一只青蛙一次可以跳上1级台阶，也可以跳上2级台阶。此时该青蛙跳上一个n级台阶总共有多少种跳法？
+//
+//算法分析：青蛙跳一级台阶有一种跳法，跳两级台阶有两种跳法，跳三级台阶有3种跳法，青蛙跳4个台阶有5种跳法，跳5个台阶有8种跳法...(类似斐波那契数列）；
+
 #include <stdio.h>
-unsigned short getbits(unsigned short value)
-{
-   int i=0;
-   int j=0;
-   unsigned short int z,a,q;
-   z=0;
-   for(i=1;i<=15;i+=2)
-   {
-      q=1;
-      for(j=1;j<=(16-i-1)/2;j++)
-      {
-	 q=q*2;
-      }
-      a=value>>(16-i);
-      a=a<<15;
-      a=a>15;
-      z=z+a*q;
-   }
-  return z;
+int Fib(int n)
+{ 
+  if(n<=3)
+    return n;
+  else	  
+  {	
+    int a = 2;
+    int b = 3;
+    int c = 0;
+    while(n>3)
+    {
+      c = a+b;
+      a = b;
+      b = c;
+      n--;
+    }
+    return c;
+  }
 }
 int main()
 {
-   unsigned short int a;
-   printf("\ninput an octal number:");
-   scanf("%o",&a);
-   printf("result:%o\n",getbits(a));
-   return 0;
+  int n = 0;
+  printf("Please input your number:\n");
+  scanf("%d",&n);
+  int ret = Fib(n);
+  printf("%d\n",ret);
+  return 0;
 }
