@@ -1,32 +1,18 @@
-//汉诺塔（函数递归的方式实现）
-//算法分析：1.先将n-1个盘子放在B下；
-//          2.将A下剩下的一个盘子放到C下；
-//          3.再将B下的n-1 个盘子移动到C下。
+//求一个数字各位上的数字之和（函数递归实现）\n
 #include <stdio.h>
-void Move(char x,char y)
+int get_add(int n)
 {
-  printf("%c->%c ",x,y);
-}
-void HanNuo(int n, char A, char B ,char C)
-{
-  if(n==1)
-  {
-    Move(A,C);
+  if(n>9)
+  {  
+    return get_add(n/10)+n%10;
   }
   else
-  {
-    HanNuo(n-1,A,C,B);
-    Move(A,C);
-    HanNuo(n-1,B,A,C);
-  }
+   return n;
 }
 int main()
-{ 
-  int n = 0;
-  char c[3]={'A','B','C'};
-  printf("Please input your number:\n");
-  scanf("%d",&n);
-  HanNuo(n,'A','B','C');
-  printf("\n");
+{
+  int n = 1234;
+  int ret = get_add(n);
+  printf("%d\n",ret);
   return 0;
 }
