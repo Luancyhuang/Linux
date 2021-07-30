@@ -1,18 +1,21 @@
-//求一个数字各位上的数字之和（函数递归实现）\n
+//编写一段程序，像右边这样根据输入整数后，循环显示1234567890，显示的位数和输入的整数值相同。
 #include <stdio.h>
-int get_add(int n)
-{
-  if(n>9)
-  {  
-    return get_add(n/10)+n%10;
-  }
-  else
-   return n;
-}
 int main()
-{
-  int n = 1234;
-  int ret = get_add(n);
-  printf("%d\n",ret);
+{ 
+  int n = 0;
+  printf("请输入一个整数：");
+  scanf("%d",&n); 
+  int i = 0;
+  int j = 1;
+  for(i=1;i<=n;i++)
+  {
+    printf("%d",j);
+    j++;
+    if(j>9)
+    {
+      j-=10;
+    } 
+  }
+  putchar('\n');  
   return 0;
 }
