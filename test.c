@@ -1,21 +1,21 @@
-//编写一段程序，像右边这样根据输入整数后，循环显示1234567890，显示的位数和输入的整数值相同。
+//编写一段程序，像右边这样显示出身高和标准体重的对照表。显示的身高范围和间隔由输入的整数值进行控制，标准体重精确到小数点后2位。
+
+
 #include <stdio.h>
 int main()
-{ 
-  int n = 0;
-  printf("请输入一个整数：");
-  scanf("%d",&n); 
-  int i = 0;
-  int j = 1;
-  for(i=1;i<=n;i++)
+{
+  int start = 0;
+  int end = 0;
+  int i = 5;
+  printf("开始数值(cm):");
+  scanf("%d",&start);
+  printf("结束数值(cm):");
+  scanf("%d",&end);
+  printf("间隔数据(cm):");
+  scanf("%d",&i);
+  for(;start<=end;start+=i)
   {
-    printf("%d",j);
-    j++;
-    if(j>9)
-    {
-      j-=10;
-    } 
+     printf("%d %.2lf\n",start,(double)(start-100)*(0.9));
   }
-  putchar('\n');  
   return 0;
 }
