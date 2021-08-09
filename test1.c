@@ -1,18 +1,31 @@
-//求Sn = a+aa+aaa+aaaa+aaaaa,前五项的和。
+//设计一个程序来判断当前机器的字节序。(2015 百度面试大小端题）
 #include <stdio.h>
+int check_sys()
+{
+   int a = 1;
+   return *(char*)&a;
+}
 int main()
 {
-  int n = 0;
-  int a = 0;
-  scanf("%d %d",&a,&n);
-  int sum = 0;
-  int k = 0;
-  int i = 0;
-  for(i=0;i<n;i++)
+ // int a = 1;
+ // char *pa = (char*)&a;
+ // if(*pa == 1)
+ // {
+ //   printf("小端存储\n");
+ // }
+ // else
+ // {
+ //   printf("大端存储\n");
+ // }
+  int ret =  check_sys();
+  if(1 == ret)
   {
-    k = k*10+a;
-    sum += k;
+    printf("小端存储\n");
   }
-  printf("%d\n",sum);
-  return 0;
+  else
+  {
+    printf("大端存储\n");
+  }
+  return 0; 
 }
+
