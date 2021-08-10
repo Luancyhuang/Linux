@@ -1,29 +1,32 @@
-//矩阵转置
+//输入一个字符判断是元音还是辅音。
 #include <stdio.h>
 int main()
 {
-  int n = 0;
-  int m = 0;
-  int arr[10][10] = {0};
-  scanf("%d %d",&n,&m);
-  int i = 0;
-  int j = 0;
-  for(i=0;i<n;i++)
+  int ch = 0;
+  char vowel[] = "aeiouAEIOU";
+  //循环判断部分其实是在读取字符
+  while((ch = getchar()) != EOF)
   {
-    for(j=0;j<m;j++)
+    //判断是否为元音字母
+    int i = 0;
+    int flag = 0;
+    for(i=0;i<10;i++)
     {
-      scanf("%d",&arr[i][j]);
+       if(ch == vowel[i])
+       {
+         flag = 1;//是元音字母
+         break;  
+       }
     }
-  }
-  for(i=0;i<m;i++)
-  {
-    for(j=0;j<n;j++)
+    if(flag == 1)
     {
-      printf("%d ",arr[j][i]);
+      printf("vowel\n");
+    } 
+    else
+    {
+      printf("consonant\n");
     }
-    printf("\n");
+    getchar();
   }
   return 0;
 }
-
-
