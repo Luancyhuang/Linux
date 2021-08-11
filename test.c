@@ -1,32 +1,99 @@
-//输入一个字符判断是元音还是辅音。
+//函数指针实现加减乘除计算器功能
 #include <stdio.h>
+int Add(int x,int y)
+{
+  return x+y;
+}
+int Sub(int x ,int y)
+{
+  return x-y;
+}
+int Mul(int x ,int y)
+{
+  return x*y;
+}
+int Div(int x ,int y)
+{
+  return x/y;
+}
+
+void menu()
+{
+  printf("***********************\n");
+  printf("**** 1.加法 2.减法 ****\n");
+  printf("**** 3.乘法 4.除法 ****\n");
+  printf("**** 0.exit        ****\n");
+  printf("***********************\n");
+}
 int main()
 {
-  int ch = 0;
-  char vowel[] = "aeiouAEIOU";
-  //循环判断部分其实是在读取字符
-  while((ch = getchar()) != EOF)
+ //  int (*pf1)(int,int) = Add();
+ //  int (*pf2)(int,int) = Sub();
+ //  int (*pf3)(int,int) = Mul();
+ //  int (*pf4)(int,int) = Div();
+ // int (*pfArr)[5](int,int) = {0,Add,Sub,Mul,Div};//pfArr就是一个函数指针的数组
+ // int input = 0;	
+ // do
+ // {
+ //  int x = 0;
+ //  int y = 0;
+ //  int ret = 0;
+ //  menu();
+ //  printf("请选择:>");
+ //  scanf("%d",&input);
+ //  printf("请输入两个操作数:>");
+ //  scanf("%d %d",&x,&y);
+ //  switch(input)
+ //  {
+ //    case 1:
+ //       ret =  Add(x,y);
+ //       printf("%d\n",ret);
+ //       break;
+ //    case 2:
+ //       ret = Sub(x,y);
+ //       printf("%d\n",ret);
+ //       break;
+ //    case 3:
+ //       ret = Mul(x,y);
+ //       printf("%d\n",ret);
+ //       break;
+ //    case 4:
+ //       ret = Div(x,y);
+ //       printf("%d\n",ret);
+ //       break;
+ //    case 0:
+ //       printf("请退出计算器!\n");
+ //       break;
+ //    default:
+ //       printf("选择错误，请重新输入!\n");
+ //       break;
+ //  }
+ // }while(input);
+  int input = 0;
+  do
   {
-    //判断是否为元音字母
-    int i = 0;
-    int flag = 0;
-    for(i=0;i<10;i++)
+    int x = 0;
+    int y = 0;
+    int ret = 0;
+    menu();
+    printf("请选择:>");
+    scanf("%d",&input);
+    int (*pfarr[5])(int,int)= {0,Add,Sub,Mul,Div};
+    if(input == 0)
     {
-       if(ch == vowel[i])
-       {
-         flag = 1;//是元音字母
-         break;  
-       }
-    }
-    if(flag == 1)
+      printf("请退出计算器!\n");
+    } 
+    else if((input >=1) &&(input <= 4)) 
     {
-      printf("vowel\n");
+      printf("请输入两个操作数:>");
+      scanf("%d %d",&x,&y);
+      ret = pfarr[input](x,y);
+      printf("ret = %d\n",ret);
     } 
     else
     {
-      printf("consonant\n");
+      printf("选择错误，请重新输入！\n");
     }
-    getchar();
-  }
+  }while(input);
   return 0;
 }
