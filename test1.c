@@ -1,61 +1,44 @@
+//输入一个数组，用函数实现奇数在偶数前
 #include <stdio.h>
-//int main()
-//{
-//  int a[3][2] = {(0,1),(2,3),(4,5)};
-//  int *p;
-//  p = a[0];
-//  printf("%d",p[0]);
-//  return 0;
-//}
+void move(int *arr,int sz)
+{
+  int left = 0;
+  int right = sz-1;
+  //从左边找偶数
+  while(left < right)
+  {
+    while((left < right) && (*(arr+left)%2 == 1))
+    {
+      left++;
+    }
+  //从右边找奇数
+    while((left < right) && (*(arr+right)%2 == 0))
+    {
+      right--;
+    }
+    if(left < right)
+    {
+      int tmp = *(arr+left);
+      *(arr+left) = *(arr+right);
+      *(arr+right) = tmp;
+    }
+  }
+}
 
-
-//int main()
-//{ 
- // int a[5][5];
- // int (*p)[4];
- // p = a;
- // printf("%p,%d\n",&p[4][2]-&a[4][2],&p[4][2]-&a[4][2]);
- // return 0;
-//}
-//int main()
-//{
-//  int arr[10] = {1,2,3,4,5}'
-//  int *p = arr;
-//  *(p+2) == arr[2] == p[2] == *(arr+2)
-//  int a[2][5] = {1,2,3,4,5,6,7,8,9,10};
-//  int *ptr1 = (int *)(&a+1);
-//  int *ptr2 = (int *)(*(a+1));a[1]
-//  printf("%d,%d",*(ptr1-1),*(ptr2-1));		
-//  return 0;
-//} 
-//int main()
-//{
-//  char *a[] = {"work","at","alibaba"};
-//  char **pa = a;
-//  pa++;
-//  printf("%s\n",*pa);
-//  return 0;
-//}
-//
-//
-//int main()
-//{
-//  char *c[] = {"ENTER","NEW","POINT","FIRST"};
-//  char **cp[] = {c+3,c+2,c+1,c};
-//  char ***cpp = cp;
-//  printf("%s\n",**++cpp);
-//  printf("%s\n",*--*++cpp+3);
-//  printf("%s\n",*cpp[-2] +3);
-//  printf("%s\n",cpp[-1][-1]+1);
-//  return 0;
-//}
-//
+void print(int *arr,int sz)
+{
+  int i = 0;
+  for(i=0;i<sz;i++)
+  {
+    printf("%d ",*(arr+i));
+  }
+  printf("\n");
+}
 int main()
 {
-  unsigned long pulArray[] = {6,7,8,9,10};
-  unsigned long *pulPtr;
-  pulPtr = pulArray;
-  *(pulPtr+3)+=3;
-  printf("%d,%d\n",*pulPtr,*(pulPtr+3));
+  int arr[] = {1,2,3,4,5,6,7,8,9,10};
+  int sz = sizeof(arr)/sizeof(arr[0]);
+  move(arr,sz);
+  print(arr,sz);
   return 0;
-}	
+}
